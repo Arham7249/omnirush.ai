@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Background Squircles & Depth Gradients -->
+    <linearGradient id="slabGrad" x1="64" y1="64" x2="448" y2="448" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="45%" stop-color="#f8fbfe" />
+      <stop offset="100%" stop-color="#e8f3fc" />
+    </linearGradient>
+
+    <!-- Electric Blue Primary Flow -->
+    <linearGradient id="blueGlow" x1="120" y1="140" x2="380" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0066ff" />
+      <stop offset="60%" stop-color="#0052ff" />
+      <stop offset="100%" stop-color="#003dbb" />
+    </linearGradient>
+
+    <!-- Cyan Signal Flow -->
+    <linearGradient id="cyanGlow" x1="380" y1="130" x2="140" y2="370" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00d4ff" />
+      <stop offset="50%" stop-color="#00b4d8" />
+      <stop offset="100%" stop-color="#0077b6" />
+    </linearGradient>
+
+    <!-- Core Focal Radial Glow -->
+    <radialGradient id="coreGlow" cx="256" cy="256" r="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0066ff" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#00b4d8" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#0066ff" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Ambient Shadow Footprint Filter -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#091e3a" flood-opacity="0.12" />
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0066ff" flood-opacity="0.08" />
+    </filter>
+
+    <!-- Inner Bevel Highlight -->
+    <linearGradient id="bevelLight" x1="64" y1="64" x2="448" y2="448" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="25%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.25" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ambient Glow -->
+  <circle cx="256" cy="256" r="160" fill="url(#coreGlow)" />
+
+  <!-- 3D Base Slab (Rounded Squircle) -->
+  <rect x="76" y="76" width="360" height="360" rx="92" fill="url(#slabGrad)" filter="url(#softShadow)" />
+  <rect x="76" y="76" width="360" height="360" rx="92" stroke="url(#bevelLight)" stroke-width="2.5" />
+
+  <!-- Geometric Coordinate Grid Elements -->
+  <circle cx="256" cy="256" r="112" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.8" />
+  <circle cx="256" cy="256" r="64" stroke="#e2e8f0" stroke-width="1.5" opacity="0.6" />
+
+  <!-- Signal Path Left Track (Electric Blue) -->
+  <path d="M 176 160 L 256 240 L 256 352" stroke="url(#blueGlow)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Signal Path Right Track (Vibrant Cyan) -->
+  <path d="M 336 160 L 256 240 L 256 352" stroke="url(#cyanGlow)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Forward Probe Antenna -->
+  <path d="M 256 128 L 256 200" stroke="url(#blueGlow)" stroke-width="10" stroke-linecap="round" opacity="0.4" />
+
+  <!-- Intersecting Nodes -->
+  <circle cx="176" cy="160" r="14" fill="#ffffff" stroke="#0066ff" stroke-width="6" />
+  <circle cx="336" cy="160" r="14" fill="#ffffff" stroke="#00b4d8" stroke-width="6" />
+  <circle cx="256" cy="352" r="14" fill="#ffffff" stroke="#0052ff" stroke-width="6" />
+
+  <!-- Central Holographic Core Pulse -->
+  <circle cx="256" cy="240" r="22" fill="#ffffff" stroke="#0066ff" stroke-width="7" />
+  <circle cx="256" cy="240" r="8" fill="#0066ff" />
+</svg>
