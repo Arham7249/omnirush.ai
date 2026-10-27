@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f8fc" />
+    <meta name="description" content="omnirush.ai (Signalpath) turns multichain wallet activity into an explainable 3D spatial investigation brief powered by Blockscout PRO API." />
+    <title>omnirush.ai · Signalpath — Multichain Wallet Intelligence</title>
+    
+    <!-- Typography: Space Grotesk & DM Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- VIEWPORT LAYER 1: DEEP INTERACTIVE CANVAS BACKGROUND -->
+    <div class="background-layer" aria-hidden="true">
+      <canvas id="bg-canvas" class="background-canvas"></canvas>
+      <div class="background-glow-orb glow-orb-primary"></div>
+      <div class="background-glow-orb glow-orb-secondary"></div>
+      <div class="geo-cross cross-pos-1"></div>
+      <div class="geo-cross cross-pos-2"></div>
+      <div class="geo-cross cross-pos-3"></div>
+    </div>
+
+    <!-- VIEWPORT LAYER 2: INTERFACE & 3D FLOATING CONTAINER SHELL -->
+    <div class="app-shell">
+      <!-- SIDEBAR: FLOATING VERTICAL BLADE -->
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand-wrapper">
+          <div class="brand-icon-3d">
+            <span class="brand-icon-node"></span>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">omnirush<span style="color:var(--blue-electric)">.ai</span></span>
+            <span class="brand-subtitle">Signalpath v0.1.0</span>
+          </div>
+        </div>
+
+        <div class="nav-section-label">Workspace / Forensic</div>
+        <nav class="nav-menu" aria-label="Sections">
+          <a class="nav-link active" href="#overview">
+            <div class="nav-link-content">
+              <span class="nav-link-glyph">◈</span>
+              <span>Overview</span>
+            </div>
+            <span class="nav-link-tag">01</span>
+          </a>
+          <a class="nav-link" href="#signals">
+            <div class="nav-link-content">
+              <span class="nav-link-glyph">✦</span>
+              <span>Signals</span>
+            </div>
+            <span class="nav-link-tag">02</span>
+          </a>
+          <a class="nav-link" href="#footprint-section">
+            <div class="nav-link-content">
+              <span class="nav-link-glyph">⌁</span>
+              <span>Footprint</span>
+            </div>
+            <span class="nav-link-tag">03</span>
+          </a>
+          <a class="nav-link" href="#activity">
+            <div class="nav-link-content">
+              <span class="nav-link-glyph">≡</span>
+              <span>Activity</span>
+            </div>
+            <span class="nav-link-tag">04</span>
+          </a>
+          <a class="nav-link" href="#evidence">
+            <div class="nav-link-content">
+              <span class="nav-link-glyph">↗</span>
+              <span>Proof</span>
+            </div>
+            <span class="nav-link-tag">05</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="blockscout-pill">
+            <span class="pulse-indicator"></span>
+            <div class="blockscout-pill-info">
+              <strong>Blockscout PRO API</strong>
+              <span>Multichain Unified Layer</span>
+            </div>
+          </div>
+          <a class="sidebar-docs-link" href="https://docs.blockscout.com/devs/pro-api" target="_blank" rel="noreferrer">
+            <span>Explorer Documentation</span>
+            <span>↗</span>
+          </a>
+          <div class="sidebar-build-meta">OMNIRUSH // HACKATHON 2026</div>
+        </div>
+      </aside>
+
+      <!-- MAIN WORKSPACE -->
+      <main class="workspace" id="overview">
+        <!-- TOP STATUS BAR -->
+        <header class="topbar">
+          <div class="breadcrumb-trail">
+            <span>Investigation</span>
+            <span class="divider">/</span>
+            <span>Multichain Brief</span>
+            <span class="divider">/</span>
+            <span class="current">Live Analysis</span>
+          </div>
+
+          <div class="topbar-actions">
+            <div class="system-status-chip">
+              <span class="pulse-indicator"></span>
+              <span>ENGINE READY</span>
+            </div>
+            <button class="tactile-icon-btn" id="new-scan" type="button" aria-label="Start a new scan" title="Reset and new scan">＋</button>
+          </div>
+        </header>
+
+        <!-- HERO SECTION: 3D COMMAND STATION -->
+        <section class="hero-section" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <div class="eyebrow-badge">
+              <span class="eyebrow-badge-line"></span>
+              <span>Cross-Chain Threat Intelligence</span>
+            </div>
+            <h1 class="hero-headline" id="hero-title">
+              Find the signal<br /><em>in onchain noise.</em>
+            </h1>
+            <p class="hero-description">
+              Turn fragmented multichain transactions into an explainable forensic brief. Detect address poisoning, dust scams, failed executions, and cross-chain footprints with instant Blockscout verification.
+            </p>
+
+            <!-- 3D TACTILE COMMAND CAPSULE -->
+            <form id="scan-form" class="command-capsule">
+              <div class="command-input-shell floating-container tactile-slab" data-depth="3">
+                <span class="input-prefix-tag">0x</span>
+                <input
+                  id="address"
+                  class="tactile-input"
+                  name="address"
+                  spellcheck="false"
+                  autocomplete="off"
+                  placeholder="Paste 40-character hexadecimal wallet address"
+                  value="742d35Cc6634C0532925a3b844Bc454e4438f44e"
+                  aria-label="Ethereum or EVM wallet address"
+                />
+                <div class="command-actions">
+                  <button type="button" class="paste-quick-btn" id="paste-btn" title="Paste from clipboard">
+                    <span>📋</span> Paste
+                  </button>
+                  <button type="submit" class="btn-primary-tactile" id="submit-scan-btn">
+                    <span>Run Investigation</span>
+                    <span class="btn-arrow-icon">↗</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- CHAIN PICKER & DEMO PRESETS -->
+              <div class="capsule-meta-row">
+                <div class="chain-picker-group">
+                  <span class="chain-picker-label">Networks:</span>
+                  <div id="chain-picker" class="chain-picker-group" aria-label="Select chains to scan"></div>
+                </div>
+
+                <!-- JUDGE DEMO PRESETS FOR INSTANT ONE-CLICK TESTING -->
+                <div class="demo-presets-row">
+                  <span class="demo-presets-label">Judge Presets:</span>
+                  <button type="button" class="preset-btn" data-address="742d35Cc6634C0532925a3b844Bc454e4438f44e">
+                    ⚠️ Poison Attack Demo
+                  </button>
+                  <button type="button" class="preset-btn" data-address="d8dA6BF26964aF9D7eEd9e03E53415D37aA96045">
+                    💎 Vitalik.eth (DeFi)
+                  </button>
+                  <button type="button" class="preset-btn" data-address="BE0eB53F46cd790Cd13851d5EFf43D12404d33E8">
+                    🏦 Binance 7 Hotwallet
+                  </button>
+                  <button type="button" class="preset-btn" data-address="4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97">
+                    ⚡ Arbitrage Bot
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- LOADING RUNTIME STATE -->
+        <section id="loading" class="floating-container loading-capsule hidden" data-depth="2" aria-live="polite">
+          <div class="loading-gyro">
+            <div class="loading-gyro-core"></div>
+          </div>
+          <div class="loading-text">
+            <h4>Parallelizing Chain Queries…</h4>
+            <p>Querying Blockscout PRO API endpoints across selected EVM networks.</p>
+          </div>
+        </section>
+
+        <!-- INVESTIGATION BRIEF & RESULTS REPORT -->
+        <section id="results" class="results-viewport hidden" aria-live="polite">
+          <!-- MODE BANNER -->
+          <div id="mode-banner" class="mode-ribbon">
+            <div class="mode-ribbon-left">
+              <span class="mode-ribbon-pill" id="mode-pill">LIVE SCAN</span>
+              <span id="mode-text">Every metric is grounded in Blockscout PRO API responses.</span>
+            </div>
+            <span id="data-source" style="font-family:var(--font-mono); font-size:0.6875rem; color:var(--ink-muted);"></span>
+          </div>
+
+          <!-- REPORT HEADER -->
+          <div class="report-header-module">
+            <div class="report-header-title-group">
+              <div class="eyebrow-badge">
+                <span class="eyebrow-badge-line"></span>
+                <span>INVESTIGATION DOSSIER</span>
+              </div>
+              <h2>
+                <span class="target-address-capsule">
+                  <span id="address-title">0x00...000</span>
+                  <button class="btn-tactile-copy" id="copy-address" type="button" title="Copy full address">Copy</button>
+                </span>
+              </h2>
+            </div>
+            <div class="report-header-actions">
+              <span class="report-timestamp" id="timestamp"></span>
+              <button class="btn-secondary-tactile" id="download-brief" type="button">
+                <span>Download Forensic Brief</span>
+                <span>↓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- SUMMARY METRIC TILES: CLAYMORPHIC 3D SLABS -->
+          <div class="metrics-summary-grid">
+            <!-- RISK ASSESSMENT SLAB -->
+            <article class="floating-container metric-tile risk-tile" data-depth="2">
+              <div class="metric-tile-header">
+                <span class="metric-label-tag">THREAT RISK HEURISTIC</span>
+                <span class="severity-pill" id="risk-badge">LOW ATTENTION</span>
+              </div>
+              <div class="risk-tile-body">
+                <div class="risk-large-value" id="score">0</div>
+                <div class="risk-scale-denominator">
+                  / 100
+                  <span id="score-copy">No immediate threats</span>
+                </div>
+              </div>
+              <div class="risk-progress-track">
+                <div class="risk-progress-fill" id="score-bar" style="width: 3%"></div>
+              </div>
+              <p class="metric-tile-note">Heuristic model auditing address poisoning, dust probe anomalies, and failed call rates.</p>
+            </article>
+
+            <!-- ACTIVE NETWORKS SLAB -->
+            <article class="floating-container metric-tile" data-depth="1">
+              <div class="metric-tile-header">
+                <span class="metric-label-tag">ACTIVE CHAINS</span>
+                <div class="metric-icon-badge cyan">⌁</div>
+              </div>
+              <div class="metric-stat-value" id="active-chains">—</div>
+              <div class="metric-stat-caption">Networks with onchain footprint</div>
+            </article>
+
+            <!-- TRANSACTIONS SLAB -->
+            <article class="floating-container metric-tile" data-depth="1">
+              <div class="metric-tile-header">
+                <span class="metric-label-tag">TOTAL TRANSACTIONS</span>
+                <div class="metric-icon-badge">◌</div>
+              </div>
+              <div class="metric-stat-value" id="transactions">—</div>
+              <div class="metric-stat-caption">Latest activity sample window</div>
+            </article>
+
+            <!-- TOKEN TRANSFERS SLAB -->
+            <article class="floating-container metric-tile" data-depth="1">
+              <div class="metric-tile-header">
+                <span class="metric-label-tag">TOKEN TRANSFERS</span>
+                <div class="metric-icon-badge cyan">◆</div>
+              </div>
+              <div class="metric-stat-value" id="transfers">—</div>
+              <div class="metric-stat-caption">Tokens transferred across all chains</div>
+            </article>
+          </div>
+
+          <!-- DASHBOARD SPLIT GRID: SIGNALS & CHAIN FOOTPRINT -->
+          <div class="dashboard-split-grid">
+            <!-- SIGNALS PANEL -->
+            <article class="floating-container dashboard-card" id="signals" data-depth="2">
+              <div class="dashboard-card-head">
+                <div class="dashboard-card-title">
+                  <span class="metric-label-tag">ANOMALY DETECTION</span>
+                  <h3>Detected Signals</h3>
+                </div>
+                <span class="counter-badge-blue" id="signal-count">0</span>
+              </div>
+              <div id="signals-list" class="signals-stack"></div>
+            </article>
+
+            <!-- CHAIN FOOTPRINT PANEL -->
+            <article class="floating-container dashboard-card" id="footprint-section" data-depth="2">
+              <div class="dashboard-card-head">
+                <div class="dashboard-card-title">
+                  <span class="metric-label-tag">MULTICHAIN SPREAD</span>
+                  <h3>Chain Footprint</h3>
+                </div>
+                <span style="color:var(--blue-electric); font-size:1.15rem;">⌁</span>
+              </div>
+              <div id="footprint" class="footprint-stack"></div>
+            </article>
+          </div>
+
+          <!-- BLOCKSCOUT ACTIVITY TABLE -->
+          <article class="floating-container activity-card" id="activity" data-depth="2">
+            <div class="dashboard-card-head" style="margin-bottom:14px;">
+              <div class="dashboard-card-title">
+                <span class="metric-label-tag">EVIDENCE LEDGER</span>
+                <h3>Recent Onchain Activity</h3>
+              </div>
+              <div class="activity-tools-row">
+                <div class="search-box-tactile">
+                  <span>⌕</span>
+                  <input id="activity-search" type="search" placeholder="Filter method or hash" aria-label="Search activity" />
+                </div>
+                <select id="activity-filter" class="select-box-tactile" aria-label="Filter status">
+                  <option value="all">All Statuses</option>
+                  <option value="ok">Confirmed</option>
+                  <option value="error">Failed Calls</option>
+                </select>
+                <a id="explorer-link" class="btn-secondary-tactile" target="_blank" rel="noreferrer" style="padding:6px 12px; font-size:0.75rem;">
+                  <span>Open Blockscout</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="table-responsive-wrapper">
+              <table class="evidence-table">
+                <thead>
+                  <tr>
+                    <th>CHAIN</th>
+                    <th>INTERACTION / METHOD</th>
+                    <th>TIMESTAMP</th>
+                    <th>EXECUTION STATUS</th>
+                    <th>TRANSACTION HASH</th>
+                  </tr>
+                </thead>
+                <tbody id="activity-list"></tbody>
+              </table>
+              <div id="activity-empty" class="empty-state-notice hidden">No transactions matched your search criteria.</div>
+            </div>
+          </article>
+
+          <!-- PROOF & TRACEABILITY PANEL -->
+          <article class="floating-container traceability-card" id="evidence" data-depth="2">
+            <div class="trace-copy-wing">
+              <span class="metric-label-tag">TRACEABLE BY DESIGN</span>
+              <h3>Every claim has mathematical proof.</h3>
+              <p>
+                Signalpath analyzes Blockscout PRO API responses directly without third-party black-box heuristics. Inspect every address balance, contract interaction, and token event in the native Blockscout block explorer for the selected chain.
+              </p>
+            </div>
+            <div class="trace-links-grid" id="evidence-links"></div>
+          </article>
+
+          <!-- REPORT FOOTER -->
+          <div class="report-meta-footer">
+            <span>Powered by Blockscout PRO API · Real-time Multichain Forensic Brief</span>
+            <span>omnirush.ai · Signalpath Engine</span>
+          </div>
+        </section>
+
+        <!-- ERROR STATE -->
+        <section id="error" class="floating-container error-capsule hidden" data-depth="1" role="alert">
+          <div class="error-icon-box">!</div>
+          <div class="error-info">
+            <strong>Investigation Error</strong>
+            <p id="error-message">Unable to query selected networks.</p>
+          </div>
+          <button id="retry-scan" class="btn-secondary-tactile" type="button" style="margin-left:auto;">Retry Scan</button>
+        </section>
+
+        <!-- SITE FOOTER -->
+        <footer class="site-bottom-footer">
+          <span>omnirush.ai // Signalpath · 3D Spatial Multichain Intelligence</span>
+          <span>Engineered for the Blockscout Hackathon 2026</span>
+        </footer>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
